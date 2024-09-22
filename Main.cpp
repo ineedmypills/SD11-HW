@@ -7,50 +7,30 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    double distance;
-    double time;
+    cout << "\nЗадача 1\n";
+    int num;
+    cout << "Введите шестизначное число: ";
+    cin >> num;
+    if (num > 99999 && num < 1000000) 
+    {
+        if (num / 100000 + num / 10000 % 10 + num / 1000 % 10 == num / 100 % 10 + num / 10 % 10 + num % 10)
+            cout << "\nСчастливое!\n";
+        else 
+            cout << "\nНе счастливое...\n";
+    }
+    else 
+    {
+        cout << "\nЧисло не шестизначное!\n";
+    }
 
-    std::cout << "\nЗадача 1.\n";
-    std::cout << "Расстояние до аэропорта (в км): ";
-    std::cin >> distance;
-    std::cout << "Время (в часах): ";
-    std::cin >> time;
-    std::cout << "\nСкорость: " << distance/time << "км/ч";
+    cout << "\nЗадача 2\n";
+    char a, b, c, d;
+    cout << "Введите четырехзначное число: ";
+    cin >> a >> b >> c >> d; //ввод можно юзать несколько раз, как и вывод, жесть 0.0
+    cout << b << a << d << c << "\n";
 
-
-    int hours;
-    int minutes;
-    int seconds;
-
-    std::cout << "\n\nЗадача 2.\n";
-    std::cout << "Часы: ";
-    std::cin >> hours;
-    std::cout << "Минуты: ";
-    std::cin >> minutes;
-    std::cout << "Секунды: ";
-    std::cin >> seconds;
-    std::cout << "\nСтоимость (в гривнах (why?..)): " << (hours * 3600 + minutes * 60 + seconds) / 60 * 2;
-
-    double carDistance;
-    double gasFlow;
-    double gas1;
-    double gas2;
-    double gas3;
-
-    std::cout << "\n\nЗадача 3.\n";
-    std::cout << "Дистанция: ";
-    std::cin >> carDistance;
-    std::cout << "Расход бензина (в литрах на 100км): ";
-    std::cin >> gasFlow;
-    std::cout << "Стоимость первого вида бензина (на 1л): ";
-    std::cin >> gas1;
-    std::cout << "Стоимость второго вида бензина (на 1л): ";
-    std::cin >> gas2;
-    std::cout << "Стоимость третьего вида бензина (на 1л): ";
-    std::cin >> gas3;
-    std::cout << "\nСтоимость поездки на первом виде бензина: " << (carDistance / 100 * gasFlow) * gas1 << "\n";
-    std::cout << "Стоимость поездки на втором виде бензина: " << (carDistance / 100 * gasFlow) * gas2 << "\n";
-    std::cout << "Стоимость поездки на третьем виде бензина: " << (carDistance / 100 * gasFlow) * gas3 << "\n";
+    cout << "\nЗадача 3\n";
+    cout << "Я хз 0.0\n";
 
     return 0;
 }
