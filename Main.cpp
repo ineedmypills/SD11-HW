@@ -15,47 +15,50 @@ int main()
 	double tenge{ 0.19 };
 	int currency_type{};
 
-    std::cout << "\nЗадача 1.\n";
-    std::cout << "Расстояние до аэропорта (в км): ";
-    std::cin >> distance;
-    std::cout << "Время (в часах): ";
-    std::cin >> time;
-    std::cout << "\nСкорость: " << distance/time << "км/ч";
+	while (true) {
+		std::cout << "\n\n 1. Доллар \n 2. Евро \n 3. Юань \n 4. Фарит \n 5. Йен \n 6. Тенге \n 7. Выйти из обменника \nЧто делаем?: ";
+		std::cin >> currency_type;
+
+		if (currency_type == 7)
+		{
+			break;
+		}
+
+		std::cout << "\nКоличество рублей: ";
+		std::cin >> rubles;
 
 
-    int hours;
-    int minutes;
-    int seconds;
+		if (currency_type == 1)
+		{
+			std::cout << "\nВы получите " << (rubles / dollar) * 0.95 << " долларов (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+		}
+		else if (currency_type == 2)
+		{
+			std::cout << "\nВы получите " << (rubles / euro) * 0.95 << " евро (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+		}
+		else if (currency_type == 3)
+		{
+			std::cout << "\nВы получите " << (rubles / yuan) * 0.95 << " Юаней (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+		}
+		else if (currency_type == 4)
+		{
+			std::cout << "\nВы получите " << (rubles / farit) * 0.95 << " фаритов (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+		}
+		else if (currency_type == 5)
+		{
+			std::cout << "\nВы получите " << (rubles / yen) * 0.95 << " йен (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+		}
+		else if (currency_type == 6)
+		{
+			std::cout << "\nВы получите " << (rubles / tenge) * 0.95 << " тенге (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+		}
+		else
+		{
+			std::cout << "\nНеверный ввод...";
+		}
+	}
 
-    std::cout << "\n\nЗадача 2.\n";
-    std::cout << "Часы: ";
-    std::cin >> hours;
-    std::cout << "Минуты: ";
-    std::cin >> minutes;
-    std::cout << "Секунды: ";
-    std::cin >> seconds;
-    std::cout << "\nСтоимость (в гривнах (why?..)): " << (hours * 3600 + minutes * 60 + seconds) / 60 * 2;
 
-    double carDistance;
-    double gasFlow;
-    double gas1;
-    double gas2;
-    double gas3;
-
-    std::cout << "\n\nЗадача 3.\n";
-    std::cout << "Дистанция: ";
-    std::cin >> carDistance;
-    std::cout << "Расход бензина (в литрах на 100км): ";
-    std::cin >> gasFlow;
-    std::cout << "Стоимость первого вида бензина (на 1л): ";
-    std::cin >> gas1;
-    std::cout << "Стоимость второго вида бензина (на 1л): ";
-    std::cin >> gas2;
-    std::cout << "Стоимость третьего вида бензина (на 1л): ";
-    std::cin >> gas3;
-    std::cout << "\nСтоимость поездки на первом виде бензина: " << (carDistance / 100 * gasFlow) * gas1 << "\n";
-    std::cout << "Стоимость поездки на втором виде бензина: " << (carDistance / 100 * gasFlow) * gas2 << "\n";
-    std::cout << "Стоимость поездки на третьем виде бензина: " << (carDistance / 100 * gasFlow) * gas3 << "\n";
 
 	return 0;
 }
