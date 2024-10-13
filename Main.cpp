@@ -1,62 +1,136 @@
 ﻿#include <iostream>
 #include <Windows.h>
+#include <ctime>
+
+int Random(int min, int max) {
+	return min + rand() % (max - min + 1);
+}
 
 int main()
 {
+	srand(time(0));
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	double rubles{};
-	double dollar{ 92.78 };
-	double euro{ 103.44 };
-	double yuan{ 13.23 };
-	double farit{ 37 };
-	double yen{ 0.65 };
-	double tenge{ 0.19 };
-	int currency_type{};
+	std::cout << "Задача 1.\n\n";
 
-	while (true) {
-		std::cout << "\n\n 1. Доллар \n 2. Евро \n 3. Юань \n 4. Фарит \n 5. Йен \n 6. Тенге \n 7. Выйти из обменника \nЧто делаем?: ";
-		std::cin >> currency_type;
-
-		if (currency_type == 7)
-		{
-			break;
-		}
-
-		std::cout << "\nКоличество рублей: ";
-		std::cin >> rubles;
+	const int size = 10;
+	int rand_arr[size]{};
 
 
-		if (currency_type == 1)
+
+
+	for (int i = 0; i < size; i++)
+	{
+		rand_arr[i] = Random(0,100);
+	}
+
+	int min = rand_arr[0];
+	int max = rand_arr[0];
+
+	for (int i = 0; i < size; i++)
+	{
+		if (rand_arr[i] > max)
 		{
-			std::cout << "\nВы получите " << (rubles / dollar) * 0.95 << " долларов (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
+			max = rand_arr[i];
 		}
-		else if (currency_type == 2)
+		if (rand_arr[i] < min)
 		{
-			std::cout << "\nВы получите " << (rubles / euro) * 0.95 << " евро (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
-		}
-		else if (currency_type == 3)
-		{
-			std::cout << "\nВы получите " << (rubles / yuan) * 0.95 << " Юаней (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
-		}
-		else if (currency_type == 4)
-		{
-			std::cout << "\nВы получите " << (rubles / farit) * 0.95 << " фаритов (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
-		}
-		else if (currency_type == 5)
-		{
-			std::cout << "\nВы получите " << (rubles / yen) * 0.95 << " йен (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
-		}
-		else if (currency_type == 6)
-		{
-			std::cout << "\nВы получите " << (rubles / tenge) * 0.95 << " тенге (с учётом комиссии " << rubles * 0.05 << " рублей (5%))";
-		}
-		else
-		{
-			std::cout << "\nНеверный ввод...";
+			min = rand_arr[i];
 		}
 	}
+
+	std::cout << "Массив: ";
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << rand_arr[i] << " ";
+	}
+
+	std::cout << "\nМинимальное число: " << min << "\nМаксимальное число: " << max << std::endl;
+
+
+
+	std::cout << "\nЗадача 2.\n\n";
+
+	int min_r{}, max_r{}, num{}, sum{}, arr[size]{};
+
+	std::cout << "Минимальное случайное число: ";
+	std::cin >> min_r;
+	do {
+	std::cout << "Максимальное случайное число: ";
+	std::cin >> max_r;
+	} while (max_r < min_r);
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = Random(min_r, max_r);
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+
+	std::cout << "\n\nВаше число: ";
+	std::cin >> num;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] < num){
+			sum += arr[i];
+		}
+	}
+
+	std::cout << "Сумма чисел, меньше чем " << num << ": " << sum;
+
+
+
+	std::cout << "\n\nЗадача 3.\n\n"; 
+
+	const int months{ 12 };
+	int months_profit[months]{};
+
+	for (int i = 0; i < months; i++)
+	{
+			std::cout << "Прибыль за " << i + 1 << " месяц: ";
+			std::cin >> months_profit[i];
+	}
+	
+	int month_from{}, month_to{};
+	
+	std::cout << "\nДиапазон" << std::endl;
+	do{
+	std::cout << "С: "; 
+	std::cin >> month_from;
+	} while (month_from < 1 || month_from > 12);
+	
+	do {
+		std::cout << "По: ";
+		std::cin >> month_to;
+	} while (month_to < month_from || month_to > 12);
+
+	for (int i = month_from; i < month_to+1; i++)
+	{
+		std::cout << "\nПрибыль за " << i << " месяц: " << months_profit[i-1];
+	}
+
+	int min_profit = months_profit[month_from];
+	int max_profit = months_profit[month_to];
+
+	for (int i = month_from; i < month_to; i++)
+	{
+		if (months_profit[i] > max_profit)
+		{
+			max_profit = months_profit[i];
+		}
+		if (months_profit[i] < min_profit)
+		{
+			min_profit = months_profit[i];
+		}
+	}
+
+	std::cout << "\n\nМинимальная прибыль: " << min_profit << "\nМаксимальная прибыль: " << max_profit << std::endl;
 
 
 
