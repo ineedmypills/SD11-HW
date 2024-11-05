@@ -10,38 +10,47 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	int array[3]{};
-	int user_num{};
-	std::cout << "Число: ";
-	std::cin >> user_num;
-	std::cout << std::endl;
+    std::cout << "Задача 1: " << std::endl;
 
-	std::cout << "Задача 1: " << std::endl;
-	array[0] = user_num;
-	array[1] = array[0] * 2;
-	array[2] = array[1] * 2;
 
-	std::cout << "Массив: " << std::endl;
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << array[i] << " ";
-	}
+    const int rows = 3;
+    const int cols = 3;
 
-	std::cout << std::endl << std::endl;
+    int array[rows][cols]{};
 
-	std::cout << "Задача 2: " << std::endl;
-	array[0] = user_num;
-	array[1] = array[0] + 1;
-	array[2] = array[1] + 1;
+    int start_number;
+    std::cout << "Введите число: ";
+    std::cin >> start_number;
 
-	std::cout << "Массив: " << std::endl;
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << array[i] << " ";
-	}
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j <= i; j++) {
+            array[i][j] = start_number * (1 << j);
+        }
+    }
 
-	std::cout << std::endl << std::endl << "А в чём подвох/сложность?..";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j <= i; j++) {
+            std::cout << array[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 
+    std::cout << std::endl;
+
+    std::cout << "Задача 2: " << std::endl;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            array[i][j] = start_number + (i * cols + j);
+        }
+    }
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            std::cout << array[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
 
 
 	return 0;
